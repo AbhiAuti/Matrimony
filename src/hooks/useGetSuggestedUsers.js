@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../store/authStore";
 import useShowToast from "./useShowToast";
-import { collection, getDocs, limit, query } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 
 const useGetSuggestedUsers = () => {
@@ -18,7 +18,6 @@ const useGetSuggestedUsers = () => {
                     const usersRef = collection(firestore, "users");
                     const q = query(
                         usersRef,
-                        limit(3)
                     );
                     const querySnapshot = await getDocs(q);
                     const users = [];
